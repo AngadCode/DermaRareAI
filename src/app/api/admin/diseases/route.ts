@@ -17,7 +17,11 @@ export async function GET() {
     return NextResponse.json(diseases);
   } catch (error: any) {
     console.error("Admin GET diseases error:", error);
-    return NextResponse.json({ error: "Failed to fetch diseases" }, { status: 500 });
+    return NextResponse.json({
+      error: "Failed to fetch diseases",
+      message: error.message,
+      stack: error.stack
+    }, { status: 500 });
   }
 }
 
